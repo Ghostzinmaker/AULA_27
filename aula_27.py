@@ -1,11 +1,11 @@
 cont = 0 #Contador
-soma_notas = 0 #Contador
-soma_notas_cont = 1 #Contador
 qnt_alunos = int(input("Quantos alunos? ")) #Input que vai receber uma ertrada do user e mostrar uma mensagem na tela
 
 while cont < qnt_alunos: #Enquanto o contador for menor que a quantidades de alunos, repita.
     nome_aluno = input(f"Digite o nome do aluno: ") #Input que vai receber uma ertrada do user e mostrar uma mensagem na tela
     faltas = int(input("Digite quantas faltas esse aluno tem: ")) #Input que vai receber uma ertrada do user e mostrar uma mensagem na tela
+    soma_notas = 0 #Contador
+    soma_notas_cont = 1 #Contador
     while soma_notas_cont <= 4: #Enquanto o contador for menor que ou igual a 4, repita.
         nota = float(input(f"Digite a nota do aluno {nome_aluno} do {soma_notas_cont}º bimestre: "))  #Input que vai receber uma ertrada do user e mostrar uma mensagem na tela
         soma_notas += nota #Soma das variaveis.
