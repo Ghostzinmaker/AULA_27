@@ -5,7 +5,7 @@ situacao = bool
 qnt_alunos = int(input("Quantos alunos? "))
 
 while cont < qnt_alunos:
-    nome_aluno = input(f"Digite o nome do {qnt_alunos}º aluno: ")
+    nome_aluno = input(f"Digite o nome do aluno: ")
     faltas = int(input("Digite quantas faltas esse aluno tem: "))
     while soma_notas_cont <= 4:
         nota = float(input(f"Digite a nota do aluno {nome_aluno} do {soma_notas_cont}º bimestre: "))
@@ -20,16 +20,14 @@ while cont < qnt_alunos:
     elif media >= 5:
         situacao = 'RECUPERAÇÃO'
         rec = float(input(f"O aluno {nome_aluno} está de recuperação, digite a nota da sua prova: "))
-        if media - rec == 8:
+        if media + rec >= 8:
+            media = media + rec
             situacao = 'APROVADO'
         else:
             situacao = 'REPROVADO'
     else:
-        situacao = 'REPROVADP'
-    
-        
-    print(f"A média do aluno {nome_aluno} é: {media}")
+        situacao = 'REPROVADO'
 
-
+    print("O aluno:", nome_aluno, "foi", situacao, "com a média:", media, "e com", faltas, "faltas.")
 
     cont += 1
