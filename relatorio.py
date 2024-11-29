@@ -21,7 +21,7 @@ def cadastrar_alunos():                                                         
         elif media >= 5:                                                                                                         #Se a média for maior ou igual a 5
             situacao = 'RECUPERAÇÃO'                                                                                             #Variavel que vai receber uma palavra.
             rec = float(input(f"O aluno {nome_aluno} está de recuperação, digite a nota da sua prova: "))                        #Input para a nota da recuperação
-            media = 10 - media                                                                                                      #Atualiza a media.
+            media = 10 - media                                                                                                   #Atualiza a media.
             if media + rec >= 8:                                                                                                 #Se a soma da media com a nota de recuperaçao for maior ou igual a 8.
                 situacao = 'APROVADO'                                                                                            #Variavel que vai receber uma palavra.
             else:                                                                                                                #Senao.
@@ -39,7 +39,7 @@ def relatorio():                                                                
     else:                                                                                                                        #Senao
         print("\n--- Resultados Finais ---")                                                                                     #Mostrar uma mensagem na tela.
         for aluno in dados_alunos:                                                                                               #Para cada aluno na lista.
-            print(f"Aluno: {aluno['nome']}, Situação: {aluno['situacao']}, Média: {aluno['media']:.2f}, Faltas: {aluno['faltas']}")#Mostra os dados do aluno.
+            print(f"\nAluno: {aluno['nome']}\nSituação: {aluno['situacao']}\nMédia: {aluno['media']:.2f}\nFaltas: {aluno['faltas']}")#Mostra os dados do aluno.
 
 while True:                                                                                                                      #Enquanto for verdadeiro, repita.
     selecao = int(input("\n1 - cadastrar os alunos\n2 - Ver o relatório\n3 - Cancelar\n"))                                       #Receber entrada do user e mostrar uma mensagem na tela
