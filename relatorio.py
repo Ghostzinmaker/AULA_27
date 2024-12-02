@@ -3,8 +3,8 @@ dados_alunos = []                                                               
 def cadastrar_alunos():                                                                                                          #Declarando funcao para cadastrar os alunos.
     alunos = int(input("Digite quantos alunos voce quer cadastrar: "))                                                           #Variavel que vai receber uma entrada do user e mostrar uma mensagem na tela.
     cont = 0                                                                                                                     #Contador para o numero de alunos.
-    while cont < alunos:                                                                                                         #Enquanto o contador for menor que a quantidade de alunos, repita.
-        nome_aluno = input(f"Digite o nome do aluno: ")                                                                          #Input para o nome do aluno.
+    while cont < alunos: 
+        nome_aluno = input("Digite o nome do aluno: ")                                                                           #Input para o nome do aluno.
         faltas = int(input("Digite quantas faltas esse aluno tem: "))                                                            #Input para as faltas do aluno.
         soma_notas = 0                                                                                                           #Resetando a soma das notas.
         soma_notas_cont = 1                                                                                                      #Resetando o contador de bimestres.
@@ -13,36 +13,38 @@ def cadastrar_alunos():                                                         
             soma_notas += nota                                                                                                   #Soma dos valores.
             soma_notas_cont += 1                                                                                                 #variavel + 1.
         media = soma_notas / 4                                                                                                   #Calcula a media do aluno.
+        situacao_aluno(faltas, nome_aluno, media)
+        cont += 1
 
-        if faltas > 31:                                                                                                          #Se o aluno tiver mais de 31 faltas
-            situacao = 'Reprovado'                                                                                               #Variavel que vai receber uma palavra.
-        elif media >= 8:                                                                                                         #Se a média for maior ou igual a 8
-            situacao = 'Aprovado'                                                                                                #Variavel que vai receber uma palavra.
-        elif media >= 5:                                                                                                         #Se a média for maior ou igual a 5
-            situacao = 'RECUPERAÇÃO'                                                                                             #Variavel que vai receber uma palavra.
-            rec = float(input(f"O aluno {nome_aluno} está de recuperação, digite a nota da sua prova: "))                        #Input para a nota da recuperação
-            media = 10 - media                                                                                                   #Atualiza a media.
-            if media + rec >= 8:                                                                                                 #Se a soma da media com a nota de recuperaçao for maior ou igual a 8.
-                situacao = 'APROVADO'                                                                                            #Variavel que vai receber uma palavra.
-            else:                                                                                                                #Senao.
-                situacao = 'REPROVADO'                                                                                           #Variavel que vai receber uma palavra.
-        else:                                                                                                                    #Senao.
-            situacao = 'REPROVADO'                                                                                               #Variavel que vai receber uma palavra.
+def situacao_aluno(faltas, nome_aluno, media):
+    if faltas > 31:                                                                                                          #Se o aluno tiver mais de 31 faltas
+        situacao = 'Reprovado por faltas'                                                                                               #Variavel que vai receber uma palavra.
+    elif media >= 8:                                                                                                         #Se a média for maior ou igual a 8
+        situacao = 'Aprovado acima da média'                                                                                                #Variavel que vai receber uma palavra.
+    elif media >= 5:                                                                                                         #Se a média for maior ou igual a 5
+        rec = float(input(f"O aluno {nome_aluno} está de recuperação, digite a nota da sua prova: "))                        #Input para a nota da recuperação
+        media = 10 - media                                                                                                   #Atualiza a media.
+        if media + rec >= 8:                                                                                                 #Se a soma da media com a nota de recuperaçao for maior ou igual a 8.
+            situacao = 'Aprovado na recuperação'                                                                                            #Variavel que vai receber uma palavra.
+        else:                                                                                                                #Senao.
+            situacao = 'Reprovado na recuperação'                                                                                           #Variavel que vai receber uma palavra.
+    else:                                                                                                                    #Senao.
+        situacao = 'Reprovado abaixo da média'                                                                                               #Variavel que vai receber uma palavra.
 
-        aluno = {'nome': nome_aluno,'situacao': situacao,'media': media,'faltas': faltas}                                        #Dicionario com os dados do aluno
-        dados_alunos.append(aluno)                                                                                               #Adiciona o aluno na lista de dados.
-        cont += 1                                                                                                                #contador mais 1.
+    adicionar_aluno(nome_aluno, situacao, media, faltas)
 
-def relatorio():                                                                                                                 #Função que vai receber o relatorio.
-    if len(dados_alunos) == 0:                                                                                                   #Se todas as posições do array for ugual a 0.
-        print("Não há dados no banco de dados.")                                                                                 #Mostrar uma mensagem na tela.
-    else:                                                                                                                        #Senao
-        print("\n--- Resultados Finais ---")                                                                                     #Mostrar uma mensagem na tela.
-        indice = 0
-        while indice < len(dados_alunos):
-            aluno = dados_alunos[indice]
-            print(f"\nAluno: {aluno['nome']}\nSituação: {aluno['situacao']}\nMédia: {aluno['media']:.2f}\nFaltas: {aluno['faltas']}")
-            indice += 1
+def adicionar_aluno(nome_aluno, situacao, media, faltas):
+    aluno = {'nome': nome_aluno, 'situacao': situacao, 'media': media, 'faltas': faltas}
+    dados_alunos.append(aluno)
+
+def relatorio():
+    if len(dados_alunos) == 0:  
+        print("Não há dados no banco de dados.")  
+    else:
+        print("\n--- Resultados Finais ---")
+        for aluno in dados_alunos:
+            print(f"Nome: {aluno['nome']}\nSituação: {aluno['situacao']}\nMédia: {aluno['media']}\nFaltas: {aluno['faltas']}")
+            print("----------------------")
 
 while True:                                                                                                                      #Enquanto for verdadeiro, repita.
     selecao = int(input("\n1 - cadastrar os alunos\n2 - Ver o relatório\n3 - Cancelar\n"))                                       #Receber entrada do user e mostrar uma mensagem na tela
