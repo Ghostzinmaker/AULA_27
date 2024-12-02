@@ -38,8 +38,11 @@ def relatorio():                                                                
         print("Não há dados no banco de dados.")                                                                                 #Mostrar uma mensagem na tela.
     else:                                                                                                                        #Senao
         print("\n--- Resultados Finais ---")                                                                                     #Mostrar uma mensagem na tela.
-        for aluno in dados_alunos:                                                                                               #Para cada aluno na lista.
-            print(f"\nAluno: {aluno['nome']}\nSituação: {aluno['situacao']}\nMédia: {aluno['media']:.2f}\nFaltas: {aluno['faltas']}")#Mostra os dados do aluno.
+        indice = 0
+        while indice < len(dados_alunos):
+            aluno = dados_alunos[indice]
+            print(f"\nAluno: {aluno['nome']}\nSituação: {aluno['situacao']}\nMédia: {aluno['media']:.2f}\nFaltas: {aluno['faltas']}")
+            indice += 1
 
 while True:                                                                                                                      #Enquanto for verdadeiro, repita.
     selecao = int(input("\n1 - cadastrar os alunos\n2 - Ver o relatório\n3 - Cancelar\n"))                                       #Receber entrada do user e mostrar uma mensagem na tela
