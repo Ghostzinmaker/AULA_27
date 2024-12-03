@@ -30,7 +30,6 @@ def situacao_aluno(faltas, nome_aluno, media, nota):                            
             situacao = 'Reprovado na recuperação'                                                                                #Variavel que vai receber uma palavra.
     else:                                                                                                                        #Senao.
         situacao = 'Reprovado abaixo da média'                                                                                   #Variavel que vai receber uma palavra.
-
     adicionar_aluno(nome_aluno, situacao, media, faltas, nota)                                                                   #Declarando variaveis para uma outra função.
 
 def adicionar_aluno(nome_aluno, situacao, media, faltas, nota):                                                                  #Funçãs que esta recebendo variaves dentro de outra função.
@@ -44,7 +43,7 @@ def relatorio():                                                                
         print("\n--- Resultados Finais ---")                                                                                     #Mostrar mensagem na tela.
         for aluno in dados_alunos:                                                                                               #Acessando a variavel aluno e o array.
             print(f"Nome: {aluno['nome']}\nSituação: {aluno['situacao']}\nNotas: {aluno['notas']}\nMédia: {aluno['media']}\nFaltas: {aluno['faltas']}") #Mostrando na tela os valores da variavel e formatando o relatório.
-            print("----------------------")                                                                                      #Mostrar mensagem na tela.
+            print("-"*15)                                                                                                        #Mostrar mensagem na tela.
 
 while True:                                                                                                                      #Enquanto for verdadeiro, repita.
     selecao = int(input("\n1 - cadastrar os alunos\n2 - Ver o relatório\n3 - Cancelar\n"))                                       #Receber entrada do user e mostrar uma mensagem na tela
