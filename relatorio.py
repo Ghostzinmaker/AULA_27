@@ -24,7 +24,7 @@ def situacao_aluno(faltas, nome_aluno, media, nota):                            
     elif media >= 5:                                                                                                             #Se a média for maior ou igual a 5
         rec = float(input(f"O aluno {nome_aluno} está na recuperação, digite a nota da sua prova: "))                            #Input para a nota da recuperação
         media = 10 - media                                                                                                       #Atualiza a media.
-        if media + rec >= 8:                                                                                                     #Se a soma da media com a nota de recuperaçao for maior ou igual a 8.
+        if rec >= media:                                                                                                     #Se a soma da media com a nota de recuperaçao for maior ou igual a 8.
             situacao = 'Aprovado na recuperação'                                                                                 #Variavel que vai receber uma palavra.
         else:                                                                                                                    #Senao.
             situacao = 'Reprovado na recuperação'                                                                                #Variavel que vai receber uma palavra.
